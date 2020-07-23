@@ -1,0 +1,32 @@
+<div *ngFor="let screen of screens">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="assets/img/totem-img.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Screen: {{screen.id}}</h5>
+      <div *ngIf="screen.used">
+        <p class="card-text">This screen is currently being used</p>
+        <p>Location: {{screen.address}}</p>
+      </div>
+      <div *ngIf="!screen.used">
+        <p class="card-text">This screen is not being used and is available for placement</p>
+      </div>
+      <a>
+        <span class="material-icons" (click)="geoCodeAddress(screen.address)">
+          explore
+        </span>
+      </a>
+
+      <a>
+        <span class="material-icons" [routerLink]="['/addscreen']">
+          create
+        </span>
+      </a>
+
+      <a>
+        <span class="material-icons" (click)="deleteScreen(screen.id)">
+          delete
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
